@@ -43,7 +43,7 @@ go get github.com/kavkaz/pavo
 
 For update:
 ```sh
-go get -u github.com/kavkaz/pavo
+go get -u github.com/kavkaz/pavo/...
 ```
 
 #### Setup nginx

@@ -7,9 +7,10 @@ import (
 )
 
 type Config struct {
-	Root string
-	Host string
-	CORS bool
+	Root   string
+	Host   string
+	CORS   bool
+	Static bool
 }
 
 func ParseArgs() *Config {
@@ -17,7 +18,7 @@ func ParseArgs() *Config {
 	root := getopt.StringLong("root", 'r', "./dummy/root_storage", "Root of storage")
 	host := getopt.StringLong("host", 's', "localhost:9073", "host:port for pavo server")
 	cors := getopt.BoolLong("cors", 'c', "Enable CORS headers")
-
+	static := getopt.BoolLong("static", 'l', "Serve uploaded files")
 	getopt.Parse()
 
 	if *help {
@@ -26,8 +27,9 @@ func ParseArgs() *Config {
 	}
 
 	return &Config{
-		Root: *root,
-		Host: *host,
-		CORS: *cors,
+		Root:   *root,
+		Host:   *host,
+		CORS:   *cors,
+		Static: *static,
 	}
 }
