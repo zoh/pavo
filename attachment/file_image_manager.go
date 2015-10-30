@@ -46,7 +46,7 @@ func convertImage(src, dest, convert string) error {
 	}
 	args = append(args, dest)
 
-	out, err := exec.Command("convert", args...).CombinedOutput()
+	out, err := exec.Command("/usr/bin/convert", args...).CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("Error move original: %s, %s", err, string(out))
 	}
@@ -55,7 +55,7 @@ func convertImage(src, dest, convert string) error {
 }
 
 func identifyImageSizes(filepath string) (int, int, int64, error) {
-	cmd := exec.Command("identify", "-format", `"%w:%h:%b"`, filepath)
+	cmd := exec.Command("/usr/bin/identify", "-format", `"%w:%h:%b"`, filepath)
 
 	out, err := cmd.CombinedOutput()
 	if err != nil {

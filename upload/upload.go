@@ -218,7 +218,7 @@ func (up *Uploader) Write(temp_file *os.File, body io.Reader) error {
 //		$ file --mime-type pic.jpg
 //		pic.jpg: image/jpeg
 func IdentifyMime(file string) (string, error) {
-	out, err := exec.Command("file", "--mime-type", file).CombinedOutput()
+	out, err := exec.Command("/usr/bin/file", "--mime-type", file).CombinedOutput()
 	if err != nil {
 		return "", fmt.Errorf("identify: err: %s; detail: %s", err, string(out))
 	}
